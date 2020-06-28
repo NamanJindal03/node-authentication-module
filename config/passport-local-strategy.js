@@ -1,16 +1,20 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const User = require('../models/user');
 
-
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-      User.findOne({ username: username }, function (err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false); }
-        if (!user.verifyPassword(password)) { return done(null, false); }
-        return done(null, user);
-      });
-    }
+passport.use(new LocalStrategy({
+  //by default express takes only username & password as field, to change the default value we have to do this. As in our form
+  //we have email
+  usernameField: 'email',
+},
+  function(email, password, done) {
+    User.findOne({ email: email }, function (err, user) {
+      if (err) { console.log("error in finding user"); return done(err); }
+      if (!user) { console.log("incorrect username");return done(null, false); }
+      if (user.password != password ) {console.log("incorrect password"); return done(null, false); }
+      return done(null, user);
+    });
+  }
 ));
 
 //Enncrypts and sets the id in the cookies

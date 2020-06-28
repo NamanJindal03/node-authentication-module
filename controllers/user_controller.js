@@ -1,7 +1,16 @@
 const User = require('../models/user');
-module.exports.signIn = (req,res) => res.render('user_sign_in.ejs');
-module.exports.signUp = (req,res) => res.render('user_sign_up.ejs');
-
+module.exports.signIn = (req,res) => {
+    if(req.isAuthenticated()){
+        res.redirect('/');
+    }
+    res.render('user_sign_in.ejs');
+}
+module.exports.signUp = (req,res) => {
+    if(req.isAuthenticated()){
+        return res.redirect('/');
+    }
+    res.render('user_sign_up.ejs');
+}
 module.exports.create = (req,res) => {
     if(req.body.password != req.body.confirm_password){
 
@@ -30,6 +39,34 @@ module.exports.create = (req,res) => {
 }
 
 module.exports.createSession = (req, res) => {
-    console.log("in create");
     return res.redirect('/');
+}
+
+module.exports.signOut = (req,res) =>{
+    req.logout();
+    return res.redirect('/users/sign-in');
+}
+
+module.exports.updatePassword = (req,res) => {
+    return res.render('pass.ejs');
+}
+
+module.exports.changePassword = (req,res) =>{
+    
+    if(req.body.new_password != req.body.confirm_password){
+
+        console.log("Password do not match");
+        /* Important -  Set Flash in here for password dont match */
+        return res.redirect('back');
+    }
+    if(req.body.password != req.user.password){
+        console.log("wrong password");
+        return res.redirect('back');
+    }
+    User.findByIdAndUpdate(req.user._id, {password: req.body.new_password}, function(err){
+        if(err){ console.log("Error Finding and updating"); return res.redirect('back');};
+        //put flash success message for password changed succesfully
+        console.log('in find and update success');
+        return res.redirect('/');
+    })
 }

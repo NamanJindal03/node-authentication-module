@@ -6,8 +6,14 @@
     <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
-    <div>
-      In Home
-    </div>
+    <h1>Home Page</h1>
+    <p>
+      <ul>
+        <li><%=user.name%></li>
+        <li><%=user.email%></li>
+        <button><a href="/users/sign-out">Sign Out</a></button>
+        <button><a href="/users/update-password">Reset Password</a></button>
+      </ul>
+    </p>
     <script src="https://kit.fontawesome.com/f30dc76486.js" crossorigin="anonymous"></script>
 </body>
