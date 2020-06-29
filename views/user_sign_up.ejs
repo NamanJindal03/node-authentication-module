@@ -1,22 +1,36 @@
-<form action="/users/create" method="POST">
-    <div>
-        <label for="name">Name: </label>
-        <input type="text" id="name" name="name" required>
-    </div>
-    <div>
-        <label for="username">Username: </label>
-        <input type="text" id="username" name="email" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <div>
-        <label for="password">Confirm Password:</label>
-        <input type="password" id="password" name="confirm_password" required>
-    </div>
-    <input type="submit" value="Sign Up">
-</form>
-<p>
-    <a href="/users/auth/google">Google Sign In/Sign Up</a>
-</p>
+
+
+<link rel="stylesheet" href="/css/sign.css">
+<div class="center-align">
+    <div class="card card-body" >
+        
+            <h2 class="text-center">
+                <i class="fa fa-user-plus"></i> Register
+            </h2>
+            <form action="/users/create" method="POST">
+                <div>
+                    <label for="name">Name </label>
+                    <input type="text" id="name" name="name" required placeholder="Enter Your Name">
+                </div>
+                <div>
+                    <label for="username">Username </label>
+                    <input type="text" id="username" name="email" required placeholder="Enter Your Email">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter Your Password">
+                </div>
+                <div>
+                    <label for="password">Confirm Password</label>
+                    <input type="password" id="password" name="confirm_password" required placeholder="Re-Enter Your Password">
+                </div>
+                <button type="submit" class="btn btn-secondary btn-block">
+                    Sign Up
+                  </button>
+            </form>
+            <span class="text-center">Or Sign Up Using </span>
+            <a class="btn btn-danger" href="/users/auth/google" role="button">Google</a> 
+            <span class="text-center">Already Have An Account? <a href="/users/sign-in">Sign In</a></span>
+      </div>
+</div>
+  

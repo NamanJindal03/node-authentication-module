@@ -1,0 +1,8 @@
+<nav>
+    <%if(locals.user){ %>  
+        <button><a href="/users/sign-out">Sign Out</a></button>
+        <button><a href="/users/update-password">Reset Password</a></button>   
+    <%}else{%>
+        
+    <%}%>
+</nav>

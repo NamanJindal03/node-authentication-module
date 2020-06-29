@@ -1,16 +1,26 @@
 <link rel="stylesheet" href="/css/sign.css">
-<form action="/users/create-session" class="box-sign" method="POST">
-    <div>
-        <label for="username">Username: </label>
-        <input type="text" id="username" name="email" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <input type="submit" value="Sign In">
-</form>
-
-<p>
-    <a href="/users/auth/google">Google Sign In/Sign Up</a>
-</p>
+<div class="center-align">
+    <div class="card card-body" >
+        
+            <h2 class="text-center">
+                <i class="fa fa-user-plus"></i> Sign In
+            </h2>
+            <form action="/users/create-session" class="box-sign" method="POST">
+                <div>
+                    <label for="username">Username </label>
+                    <input type="text" id="username" name="email" required placeholder="Enter Your Username">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter Your Password">
+                </div>
+                <button type="submit" class="btn btn-secondary btn-block">
+                    Sign In
+                  </button>
+            </form>
+            <span class="text-center">Or Sign In Using </span>
+            <a class="btn btn-danger" href="/users/auth/google" role="button">Google</a> 
+            <span class="text-center">Don't have an account? <a href="/users/sign-up">Sign Up</a></span>
+      </div>
+</div>
+  

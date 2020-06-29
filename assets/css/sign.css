@@ -1,0 +1,30 @@
+html{
+    width:100vw;
+    height:100vh;
+}
+body{
+    background: #ed1e79; background: -moz-linear-gradient(to right,  #ed1e79 0%,#662d8c 100%); background: -webkit-linear-gradient(to right,  #ed1e79 0%,#662d8c 100%); background: linear-gradient(to right,  #ed1e79 0%,#662d8c 100%);
+
+    
+}
+.center-align{
+    margin:auto;
+    width: 24rem;
+    margin-top:10vh;
+}
+.card > *{
+    margin-top:5px;
+    margin-bottom:5px;;
+}
+form div{
+    margin-bottom: 7px;
+}
+
+input{
+    width:100%;
+}
+p a{
+    width:100%;
+}
+
+
