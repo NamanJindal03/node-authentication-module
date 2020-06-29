@@ -9,9 +9,16 @@ passport.use(new LocalStrategy({
 },
   function(email, password, done) {
     User.findOne({ email: email }, function (err, user) {
+      console.log(user);
+      console.log(user._password);
       if (err) { console.log("error in finding user"); return done(err); }
       if (!user) { console.log("incorrect username");return done(null, false); }
-      if (user.password != password ) {console.log("incorrect password"); return done(null, false); }
+
+      /*if (user._password != password ) {console.log("incorrect password"); return done(null, false); }
+      we cannot just simply compare password like above
+      as we are using virtuals we need to compare our normal password by converting it into the same hash, here comes the role of
+      authenticate method of our user model*/
+      if (!user.authenticate(password) ) {console.log("incorrect password"); return done(null, false); }
       return done(null, user);
     });
   }

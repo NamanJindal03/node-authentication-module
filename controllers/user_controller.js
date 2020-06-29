@@ -1,5 +1,6 @@
 const User = require('../models/user');
 module.exports.signIn = (req,res) => {
+    console.log()
     if(req.isAuthenticated()){
         res.redirect('/');
     }
@@ -12,6 +13,12 @@ module.exports.signUp = (req,res) => {
     res.render('user_sign_up.ejs');
 }
 module.exports.create = (req,res) => {
+    const{name, email, password, confirm_password} = req.body;
+    console.log(name, email, password, confirm_password);
+    if(!password || !email || !name || !confirm_password){
+        console.log("Please fill in all fields");
+        return res.redirect('back');
+    }
     if(req.body.password != req.body.confirm_password){
 
         console.log("Password do not match");
@@ -24,9 +31,11 @@ module.exports.create = (req,res) => {
         if(err){ console.log("Error Finding user in DB"); return res.redirect('back');}
 
         if(!user){
-            User.create(req.body, function(err, user){
+            User.create({name,email,encry_password:"temp"}, function(err, user){
                 if(err){ console.log("Error in creating user"); return res.redirect('back');}
-
+                //console.log(user);
+                user.password = password;
+                user.save();
                 return res.redirect('/users/sign-in');
             })
         }
