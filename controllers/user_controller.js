@@ -87,8 +87,8 @@ module.exports.changePassword = (req,res) =>{
     //if new password doesnt matches with new confirm password then we return
     if(req.body.new_password != req.body.confirm_password){
 
-        console.log("Password do not match");
-        req.flash('error', 'Password do not match');
+        console.log("New Password do not match");
+        req.flash('error', 'New Password do not match');
         return res.redirect('back');
     }
     
