@@ -10,11 +10,15 @@
             <form action="/users/create" method="POST">
                 <div>
                     <label for="name">Name </label>
-                    <input type="text" id="name" name="name" required placeholder="Enter Your Name">
+                    <!-- value="<%= typeof name != 'undefined' ? name:'' %>" -->
+                    <input type="text" id="name" name="name" required placeholder="Enter Your Name" >
+                    
                 </div>
                 <div>
+                    <!-- value="<%= typeof email != 'undefined' ? email:'' %>" -->
                     <label for="username">Username </label>
                     <input type="text" id="username" name="email" required placeholder="Enter Your Email">
+                    
                 </div>
                 <div>
                     <label for="password">Password</label>

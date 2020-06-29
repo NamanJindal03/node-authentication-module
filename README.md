@@ -25,4 +25,19 @@ Tech Stack used: HTML, CSS, JS, Node.js, Express.js, Passport.js
 npm install
 npm start
 ```
+7. Your project is ready
+
 # Features 
+1. Sign up and Sign in functionality both Manual and Google OAuth using passport 
+2. Display of Notifications using Flash and Noty
+3. Change Password if sign up manually
+
+# Directory Structure 
+This Application follows MVC Architecture
+1. Assests - It has folders CSS & JS - all css and front end js files goes in here
+2. Config - Containes configuration files for database(mongoose), passport(Oauth & manual)
+3. Controllers - Core logic(contains functions and renders views)
+4. models - schema for databases are defined in here
+5. routes - contains all routes defined in the application
+6. Views - has all the frontend files defined in ejs 
+

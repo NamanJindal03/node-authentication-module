@@ -6,19 +6,30 @@ passport.use(new LocalStrategy({
   //by default express takes only username & password as field, to change the default value we have to do this. As in our form
   //we have email
   usernameField: 'email',
+  //this pass req to callback allows us to give our callback another argument req so that we can assign value of noty
+  passReqToCallback: true
 },
-  function(email, password, done) {
+  function(req, email, password, done) {
     User.findOne({ email: email }, function (err, user) {
-      console.log(user);
-      console.log(user._password);
-      if (err) { console.log("error in finding user"); return done(err); }
-      if (!user) { console.log("incorrect username");return done(null, false); }
+      
+      if (err) { 
+        req.flash('error', err);
+        console.log("Error in finding user"); return done(err); 
+      }
+      if (!user) { 
+        req.flash('error', 'Invalid Username/Password');
+        console.log("incorrect username");return done(null, false); 
+      }
 
       /*if (user._password != password ) {console.log("incorrect password"); return done(null, false); }
       we cannot just simply compare password like above
       as we are using virtuals we need to compare our normal password by converting it into the same hash, here comes the role of
       authenticate method of our user model*/
-      if (!user.authenticate(password) ) {console.log("incorrect password"); return done(null, false); }
+      if (!user.authenticate(password) ) {
+        req.flash('error', 'Invalid Username/Password');
+        console.log("incorrect password"); return done(null, false); 
+      }
+      req.flash('success', 'Succesfully Signed In');
       return done(null, user);
     });
   }

@@ -55,6 +55,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
+//usage of flash
+app.use(flash());
+app.use(customMWare.setFlash);
 
 app.use('/', require('./routes/index.js'));
 

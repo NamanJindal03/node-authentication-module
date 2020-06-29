@@ -1,9 +1,31 @@
-<form action="/users/change-password" method="POST">
-    <label for="current-password">Current Password</label>
-    <input type="password" name="password" id="current-password">
-    <label for="new-password">New Password</label>
-    <input type="password" name="new_password" id="new-password">
-    <label for="confirm-password">Confirm New Password</label>
-    <input type="password" name="confirm_password" id="confirm-password">
-    <input type="submit" value="Change Password">
-</form>
+
+<link rel="stylesheet" href="/css/sign.css">
+<div class="center-align">
+    <div class="card card-body" >
+        
+            <h2 class="text-center">
+                Change Password
+            </h2>
+            <form action="/users/change-password" method="POST">
+                <div>
+                    <label for="current-password">Current Password</label>
+                    <input type="password" name="password" id="current-password" required placeholder="Enter Current Password">
+                </div>
+                <div>
+                    <label for="new-password">New Password</label>
+                    <input type="password" name="new_password" id="new-password" required placeholder="Enter New Password">
+                </div>
+                <div>
+                    <label for="confirm-password">Confirm New Password</label>
+                    <input type="password" name="confirm_password" id="confirm-password" required placeholder="Re-enter New Password">
+                </div>
+                <button type="submit" class="btn btn-secondary btn-block">
+                    Change Password
+                  </button>
+            </form>
+            <span class="text-center">Or Sign In Using </span>
+            <a class="btn btn-danger" href="/users/auth/google" role="button">Google</a> 
+            <span class="text-center">Don't have an account? <a href="/users/sign-up">Sign Up</a></span>
+      </div>
+</div>
+  

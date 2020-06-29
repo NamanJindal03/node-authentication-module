@@ -9,7 +9,7 @@ router.post('/create', userController.create);
 //called when user attempts to sign in and we use an inbuilt function by passport to authenticate the user.
 router.post('/create-session', passport.authenticate(
     'local',
-    {failureRedirect: '/users/xyz'},
+    {failureRedirect: '/users/sign-in'},
 ), userController.createSession)
 router.get('/sign-out', userController.signOut);
 router.get('/update-password', passport.checkAuthenticatedUser, userController.updatePassword);

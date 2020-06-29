@@ -4,6 +4,7 @@ const googleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const crypto = require("crypto");
 const User = require("../models/user");
 
+//used for accessing the environment variables
 const dotenv = require('dotenv');
 dotenv.config();
 

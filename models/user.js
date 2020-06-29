@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const { v4: uuidv4 } = require('uuid');
+//our schema
 const userSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -18,6 +19,8 @@ const userSchema = new mongoose.Schema({
 },{
     timestamps: true
 })
+
+//using virtuals to get unencrypted password and set encrypted password
 userSchema.virtual("password")
     .set(function(password){
         this._password = password;
@@ -30,6 +33,8 @@ userSchema.virtual("password")
     .get(function(){
         return this._password;
     })
+
+//user schema methods
 userSchema.methods = {
 
     //compares the plainpassword with excrypted pass and returns true or false

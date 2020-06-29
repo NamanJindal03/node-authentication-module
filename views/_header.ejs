@@ -1,8 +1,11 @@
-<nav>
-    <%if(locals.user){ %>  
-        <button><a href="/users/sign-out">Sign Out</a></button>
-        <button><a href="/users/update-password">Reset Password</a></button>   
-    <%}else{%>
-        
-    <%}%>
-</nav>
+<!-- Display the header only when the user is signed in -->
+<%if(locals.user){ %>  
+    <nav class="navbar">
+        <button><a href="/">Home</a></button>
+        <button><a href="/users/update-password">Change Password</a></button>  
+        <button><%=locals.user.name%></button>
+        <button><a href="/users/sign-out">Sign Out</a></button> 
+    </nav>
+<%}else{%>
+    
+<%}%>
