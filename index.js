@@ -9,6 +9,9 @@ const bodyParser = require('body-parser');
 //Requiring Passport and its extensions
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const passportGoogle = require('./config/passport-google-oauth2-strategy');
+require('dotenv').config();
+console.log(process.env.API_KEY);
 const MongoStore = require('connect-mongo')(session);
 
 app.use(express.urlencoded());
